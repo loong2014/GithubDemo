@@ -27,7 +27,6 @@ jacoco.exec
 # Android Studio captures folder
 /captures
 
-
 # Log Files
 *.log
 
