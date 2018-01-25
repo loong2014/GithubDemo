@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HelloGithub</string>
+    <string name="home_page_tip">this is home page</string>
+    <string name="loading_tip">数据加载中... ...</string>
 </resources>
