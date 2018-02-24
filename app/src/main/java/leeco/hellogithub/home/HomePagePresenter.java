@@ -111,6 +111,6 @@ public class HomePagePresenter implements HomePagePresenterInterface {
     }
 
     private void logI(String msg) {
-        Log.d("Sunny-HomePagePresenter", msg);
+        Log.d("Sunny", msg);
     }
 }

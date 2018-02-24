@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.List;
 
@@ -32,6 +33,10 @@ public class HomeActivity extends BaseActivity implements HomePageViewInterface 
     private HomePageRecyclerAdapter mRecyclerAdapter;
 
     private View mLoadingLayout;
+    private Button tab1;
+    private Button tab2;
+    private Button tab3;
+    private Button tab4;
 
     private HomePagePresenter mHomePagePresenter;
 
@@ -88,6 +93,11 @@ public class HomeActivity extends BaseActivity implements HomePageViewInterface 
     }
 
     private void initView() {
+        tab1 = findViewById(R.id.home_tab_1);
+        tab2 = findViewById(R.id.home_tab_2);
+        tab3 = findViewById(R.id.home_tab_3);
+        tab4 = findViewById(R.id.home_tab_4);
+
         initRecyclerView();
     }
 
@@ -99,6 +109,12 @@ public class HomeActivity extends BaseActivity implements HomePageViewInterface 
         mRecyclerView.setAdapter(mRecyclerAdapter);
 
         mLayoutManager = new HomePageGridLayoutManager(this, 3);
+        mLayoutManager.setLayoutManagerCallback(new HomePageGridLayoutManager.ILayoutManagerCallback() {
+            @Override
+            public View getTabView() {
+                return tab1;
+            }
+        });
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         mRecyclerAdapter.setItemListener(mRecyclerViewItemListener);

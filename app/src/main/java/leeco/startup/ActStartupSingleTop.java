@@ -1,0 +1,32 @@
+package leeco.startup;
+
+import android.content.Intent;
+import android.view.View;
+
+import leeco.hellogithub.R;
+
+public class ActStartupSingleTop extends ActBaseStartup implements View.OnClickListener {
+
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_startup_singletop;
+    }
+
+    @Override
+    protected void initViewClick() {
+        findViewById(R.id.btn_start_self).setOnClickListener(this);
+        findViewById(R.id.btn_start_other).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.btn_start_self) {
+            Intent intent = new Intent(this, ActStartupSingleTop.class);
+            startActivity(intent);
+        } else if (view.getId() == R.id.btn_start_other) {
+            Intent intent = new Intent(this, ActStartupOther.class);
+            startActivity(intent);
+        }
+    }
+}

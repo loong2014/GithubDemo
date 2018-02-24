@@ -1,5 +1,6 @@
 package leeco.hellogithub.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -12,7 +13,7 @@ import android.util.Log;
  */
 public class BaseActivity extends AppCompatActivity {
 
-    private final String className = getClass().getSimpleName();
+    private final String className = "Sunny-" + this;
 
     private boolean DEBUG = true;
 
@@ -20,6 +21,12 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         logD("onCreate");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        logD("onNewIntent");
     }
 
     @Override
@@ -71,12 +78,12 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void logI(String msg) {
-        Log.i("Sunny-" + className, msg);
+        Log.i(className, msg);
     }
 
     protected void logD(String msg) {
         if (DEBUG) {
-            Log.d("Sunny-" + className, msg);
+            Log.d(className, msg);
         }
     }
 }

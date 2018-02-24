@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/activity_main"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main Activity"/>
+
+    <Button
+        android:id="@+id/btn_standard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Standard"/>
+
+    <Button
+        android:id="@+id/btn_singleTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SingleTop"/>
+
+    <Button
+        android:id="@+id/btn_singleTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SingleTask"/>
+
+    <Button
+        android:id="@+id/btn_singleInstance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SingleInstance"/>
+
+    <Button
+        android:id="@+id/btn_start_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动另一个activity"/>
+
+</LinearLayout>
