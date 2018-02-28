@@ -24,7 +24,8 @@
             android:name="leeco.startup.ActStartupMain"/>
 
         <activity
-            android:name="leeco.startup.ActStartupOther"/>
+            android:name="leeco.startup.ActStartupOther"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
 
         <activity
             android:name="leeco.startup.ActStartupStandard"

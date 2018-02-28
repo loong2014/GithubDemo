@@ -54,12 +54,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-        logD("onSaveInstanceState");
-    }
-
-    @Override
     protected void onStop() {
         super.onStop();
         logD("onStop");
@@ -75,6 +69,18 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         logD("onDestroy");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        logD("onSaveInstanceState");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        logD("onRestoreInstanceState");
     }
 
     protected void logI(String msg) {

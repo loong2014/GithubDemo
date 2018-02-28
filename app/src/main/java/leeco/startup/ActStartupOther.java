@@ -41,6 +41,8 @@ public class ActStartupOther extends ActBaseStartup implements View.OnClickListe
             case R.id.btn_singleTask:
                 logI("onClick  btn_singleTask");
                 intent.setClass(this, ActStartupSingleTask.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 break;
 
             case R.id.btn_singleInstance:
@@ -51,7 +53,9 @@ public class ActStartupOther extends ActBaseStartup implements View.OnClickListe
             case R.id.btn_start_other:
                 logI("onClick  btn_start_other");
                 intent.setClass(this, ActStartupMain.class);
-                break;
+                System.exit(0);
+                return;
+//                break;
 
             default:
                 return;

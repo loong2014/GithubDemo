@@ -41,6 +41,8 @@ public class ActStartupMain extends ActBaseStartup implements View.OnClickListen
             case R.id.btn_singleTask:
                 logI("onClick  btn_singleTask");
                 intent.setClass(this, ActStartupSingleTask.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 break;
 
             case R.id.btn_singleInstance:

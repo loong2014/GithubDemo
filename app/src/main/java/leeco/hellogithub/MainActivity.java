@@ -1,6 +1,7 @@
 package leeco.hellogithub;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,7 +16,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         initViewClick();
     }
-
 
     private void initViewClick() {
         findViewById(R.id.btn_01).setOnClickListener(this);
@@ -35,8 +35,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
         }
         startActivity(intent);
-
     }
 
-
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 }
