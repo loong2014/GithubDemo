@@ -1,21 +1,20 @@
-package leeco.hellogithub.base;
+package com.sunny.libcore.activity;
 
+import com.sunny.libcore.log.LogUtils;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 /**
  * Created by zhangxin17 on 2018/1/25.
  * activity的基类
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends Activity {
 
-    private final String className = "Sunny-" + this;
-
-    private boolean DEBUG = true;
+    private static final boolean DEBUG = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,12 +83,12 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void logI(String msg) {
-        Log.i(className, msg);
+        LogUtils.logI(msg);
     }
 
     protected void logD(String msg) {
         if (DEBUG) {
-            Log.d(className, msg);
+            LogUtils.logD(msg);
         }
     }
 }

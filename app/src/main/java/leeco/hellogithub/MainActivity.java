@@ -5,7 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
-import leeco.hellogithub.base.BaseActivity;
+import com.sunny.libcore.activity.BaseActivity;
 import leeco.startup.ActStartupMain;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {

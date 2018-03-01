@@ -11,7 +11,7 @@ import android.widget.Button;
 import java.util.List;
 
 import leeco.hellogithub.R;
-import leeco.hellogithub.base.BaseActivity;
+import com.sunny.libcore.activity.BaseActivity;
 import leeco.hellogithub.base.IRecyclerViewItemListener;
 import leeco.hellogithub.home.model.HomePageItemInfo;
 import leeco.hellogithub.home.view.HomePageGridLayoutManager;

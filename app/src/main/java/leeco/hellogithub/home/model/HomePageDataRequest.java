@@ -2,8 +2,8 @@ package leeco.hellogithub.home.model;
 
 import android.content.Context;
 
-import leeco.hellogithub.base.BaseRequest;
-import leeco.hellogithub.base.TaskCallBack;
+import com.sunny.libcore.http.BaseRequest;
+import com.sunny.libcore.http.TaskCallBack;
 
 /**
  * Created by zhangxin17 on 2018/1/25.

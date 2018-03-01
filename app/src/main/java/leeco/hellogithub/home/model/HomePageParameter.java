@@ -1,6 +1,6 @@
 package leeco.hellogithub.home.model;
 
-import leeco.hellogithub.base.BaseParameter;
+import com.sunny.libcore.http.BaseParameter;
 
 /**
  * Created by zhangxin17 on 2018/1/25.

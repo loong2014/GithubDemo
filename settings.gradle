@@ -1,1 +1,1 @@
-include ':app', ':AidlServer'
+include ':app', ':AidlServer', ':LibCore', ':AidlClient'

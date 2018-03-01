@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import leeco.hellogithub.base.IDataFetchCallback;
-import leeco.hellogithub.base.TaskCallBack;
+import com.sunny.libcore.http.TaskCallBack;
 import leeco.hellogithub.home.model.HomePageItemInfo;
 import leeco.hellogithub.home.model.HomePageResponse;
 

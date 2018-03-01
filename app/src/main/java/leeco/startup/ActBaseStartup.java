@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import leeco.hellogithub.base.BaseActivity;
+import com.sunny.libcore.activity.BaseActivity;
 
 public class ActBaseStartup extends BaseActivity {
 
