@@ -21,28 +21,80 @@
 
         <!-- startup mode -->
         <activity
-            android:name="leeco.startup.ActStartupMain"/>
+            android:name=".startup.ActStartupMain"/>
 
         <activity
-            android:name="leeco.startup.ActStartupOther"
+            android:name=".startup.ActStartupOther"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
 
         <activity
-            android:name="leeco.startup.ActStartupStandard"
+            android:name=".startup.ActStartupStandard"
             android:launchMode="standard"/>
 
         <activity
-            android:name="leeco.startup.ActStartupSingleTop"
+            android:name=".startup.ActStartupSingleTop"
             android:launchMode="singleTop"/>
 
         <activity
-            android:name="leeco.startup.ActStartupSingleTask"
+            android:name=".startup.ActStartupSingleTask"
             android:launchMode="singleTask"
             android:taskAffinity="sunny.singleTask"/>
 
         <activity
-            android:name="leeco.startup.ActStartupSingleInstance"
+            android:name=".startup.ActStartupSingleInstance"
             android:launchMode="singleInstance"/>
+
+
+        <activity
+            android:name=".TargetActivity">
+            <intent-filter>
+                <action android:name="com.sunny.targetactivity"/>
+
+                <category android:name="com.sunny.abc"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <!-- intent  -->
+        <activity android:name=".intent.ActIntentMain">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".intent.ActIntentTarget"
+            android:label="ActIntentTarget">
+            <intent-filter>
+                <action android:name="com.sunny.targetactivity"/>
+
+                <category android:name="com.sunny.abc"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data
+                    android:mimeType="num/1*"
+                    android:scheme="tel"/>
+            </intent-filter>
+        </activity>
+
+        <service android:name=".intent.ServiceIntentTarget">
+        </service>
+
+        <activity android:name=".intent.ActIntentSecond"/>
+
+        <!-- out jump -->
+
+        <activity android:name=".outjump.ActParseOutJump">
+            <intent-filter>
+
+                <action android:name="com.suuny.outjump"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+            </intent-filter>
+        </activity>
 
     </application>
 

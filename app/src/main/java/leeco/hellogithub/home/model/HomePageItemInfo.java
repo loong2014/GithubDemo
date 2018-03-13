@@ -1,10 +1,12 @@
 package leeco.hellogithub.home.model;
 
+import java.io.Serializable;
+
 /**
  * Created by zhangxin17 on 2018/1/25.
  * home页面数据信息
  */
-public class HomePageItemInfo {
+public class HomePageItemInfo implements Serializable {
     private int itemId;
     private String showName;
     private String iconUrl;

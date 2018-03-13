@@ -29,4 +29,5 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.0.2'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation project(':LibCore')
+    implementation 'com.google.code.gson:gson:2.2.4'
 }

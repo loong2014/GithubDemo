@@ -1,12 +1,14 @@
 package leeco.hellogithub;
 
+import com.sunny.libcore.activity.BaseActivity;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
-import com.sunny.libcore.activity.BaseActivity;
-import leeco.startup.ActStartupMain;
+import leeco.hellogithub.intent.ActIntentMain;
+import leeco.hellogithub.startup.ActStartupMain;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -19,7 +21,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void initViewClick() {
         findViewById(R.id.btn_01).setOnClickListener(this);
-
+        findViewById(R.id.btn_02).setOnClickListener(this);
     }
 
     @Override
@@ -31,6 +33,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_01:
                 intent.setClass(this, ActStartupMain.class);
                 break;
+
+            case R.id.btn_02:
+                intent.setClass(this, ActIntentMain.class);
+                break;
+
             default:
                 break;
         }

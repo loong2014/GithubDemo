@@ -22,7 +22,9 @@
             android:name=".history.HistoryAidlService"
             android:enabled="true"
             android:exported="true"
+            android:isolatedProcess="true"
             android:process=":history"/>
+
     </application>
 
 </manifest>

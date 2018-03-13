@@ -1,5 +1,6 @@
 package com.sunny.aidl.client;
 
+import com.google.gson.Gson;
 import com.sunny.aidl.server.aidl.IHistoryController;
 import com.sunny.aidl.server.history.HistoryModel;
 import com.sunny.libcore.activity.BaseActivity;
@@ -9,8 +10,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.os.RemoteException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +55,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         findViewById(R.id.bindServer).setOnClickListener(this);
         findViewById(R.id.bindServer).setOnFocusChangeListener(this);
+
+        findViewById(R.id.jumpOtherAct).setOnClickListener(this);
+        findViewById(R.id.jumpOtherAct).setOnFocusChangeListener(this);
 
 
         tipTv = findViewById(R.id.historyTip);
@@ -111,27 +118,159 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mHistoryAdapter.notifyDataSetChanged();
     }
 
+    private void doJumpOtherAppActivityIntent() {
+        logI("doJumpOtherAppActivityIntent");
+
+
+        JumpInfo jumpInfo = new JumpInfo("details", "move",
+                "child", "10086", "电影");
+        Gson gson = new Gson();
+        // {"jumpType":"details","modelType":"move","subType":"child","videoId":"10086","videoName":"电影"}
+        String jumpJson = gson.toJson(jumpInfo);
+        logI("jumpJson : " + jumpJson);
+
+
+        Intent intent = new Intent();
+        intent.setAction("com.suuny.outjump");
+        intent.putExtra("sunny_jump", jumpJson);
+
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    static class JumpInfo implements Parcelable {
+
+        String jumpType;  // details
+        String modelType;  // move
+        String subType;  // child
+        String videoId;  // vid
+        String videoName;  // name
+
+        public JumpInfo(String jumpType, String modelType, String subType, String videoId, String videoName) {
+            this.jumpType = jumpType;
+            this.modelType = modelType;
+            this.subType = subType;
+            this.videoId = videoId;
+            this.videoName = videoName;
+        }
+
+        public String getJumpType() {
+            return jumpType;
+        }
+
+        public void setJumpType(String jumpType) {
+            this.jumpType = jumpType;
+        }
+
+        public String getModelType() {
+            return modelType;
+        }
+
+        public void setModelType(String modelType) {
+            this.modelType = modelType;
+        }
+
+        public String getSubType() {
+            return subType;
+        }
+
+        public void setSubType(String subType) {
+            this.subType = subType;
+        }
+
+        public String getVideoId() {
+            return videoId;
+        }
+
+        public void setVideoId(String videoId) {
+            this.videoId = videoId;
+        }
+
+        public String getVideoName() {
+            return videoName;
+        }
+
+        public void setVideoName(String videoName) {
+            this.videoName = videoName;
+        }
+
+        protected JumpInfo(Parcel in) {
+            jumpType = in.readString();
+            modelType = in.readString();
+            subType = in.readString();
+            videoId = in.readString();
+            videoName = in.readString();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(jumpType);
+            dest.writeString(modelType);
+            dest.writeString(subType);
+            dest.writeString(videoId);
+            dest.writeString(videoName);
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        public static final Creator<JumpInfo> CREATOR = new Creator<JumpInfo>() {
+            @Override
+            public JumpInfo createFromParcel(Parcel in) {
+                return new JumpInfo(in);
+            }
+
+            @Override
+            public JumpInfo[] newArray(int size) {
+                return new JumpInfo[size];
+            }
+        };
+    }
+
+    private void doJumpOtherAppActivityScheme() {
+        logI("doJumpOtherAppActivityScheme");
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("sunny://details/move/child?vid=10086&name=电影"));
+
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public void onClick(View v) {
+        long time = System.currentTimeMillis();
+        if (time - lastUpdateTime < 200) {
+            return;
+        }
+        lastUpdateTime = time;
+
         switch (v.getId()) {
 
             case R.id.historyUpdate: {
-                long time = System.currentTimeMillis();
-                if (time - lastUpdateTime < 200) {
-                    return;
-                }
-                lastUpdateTime = time;
                 doGetHistory();
                 break;
             }
 
             case R.id.bindServer: {
-                long time = System.currentTimeMillis();
-                if (time - lastUpdateTime < 200) {
-                    return;
-                }
-                lastUpdateTime = time;
+
                 bindHistoryServer();
+                break;
+            }
+            case R.id.jumpOtherAct: {
+                doJumpOtherAppActivityIntent();
+//                doJumpOtherAppActivityScheme();
                 break;
             }
 
@@ -142,19 +281,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-        switch (v.getId()) {
-
-            case R.id.historyUpdate:
-            case R.id.bindServer:
-                if (hasFocus) {
-                    v.setBackgroundColor(Color.GRAY);
-                } else {
-                    v.setBackgroundColor(Color.WHITE);
-                }
-                break;
-
-            default:
-                break;
+        if (hasFocus) {
+            v.setBackgroundColor(Color.GRAY);
+        } else {
+            v.setBackgroundColor(Color.WHITE);
         }
     }
 

@@ -1,4 +1,4 @@
-package leeco.startup;
+package leeco.hellogithub.startup;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;

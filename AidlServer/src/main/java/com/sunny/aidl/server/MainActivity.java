@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mLayoutInflater = LayoutInflater.from(this);
         initView();
 
-        bindHistoryServer();
+//        bindHistoryServer();
     }
 
     private void initView() {
@@ -67,6 +67,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private void bindHistoryServer() {
         Intent intent = new Intent(this, HistoryAidlService.class);
         bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+
+//        Intent intent = new Intent(this, EduAidlService.class);
+//        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
     private boolean isConnected = false;
@@ -74,9 +77,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            logI("onServiceConnected  service :" + service);
             mHistoryController = IHistoryController.Stub.asInterface(service);
             isConnected = true;
             tipTv.setText("服务绑定成功");
+            logI("onServiceConnected  mHistoryController :" + mHistoryController);
+
         }
 
         @Override
@@ -86,6 +92,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             tipTv.setText("服务失去连接");
         }
     };
+
+
+    private IEduAidl mEduAidl;
+    private final ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mEduAidl = IEduAidl.Stub.asInterface(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mEduAidl = null;
+        }
+    };
+
+    private int doGetSum(int a, int b) throws RemoteException {
+        return mEduAidl.getSum(a, b);
+    }
+
 
     private List<HistoryModel> getHistoryModelsByAidl() {
         if (isConnected) {
