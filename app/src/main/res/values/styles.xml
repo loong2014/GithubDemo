@@ -8,4 +8,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="SunnyTheme" parent="Theme.AppCompat.NoActionBar"/>
+
+    <style name="MainTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/main_btn_font_selector</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="MainTextStyle.MainBtnStyle">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:background">@drawable/main_btn_bg_selector</item>
+    </style>
+
 </resources>
