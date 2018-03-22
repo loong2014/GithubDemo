@@ -98,8 +98,12 @@
         </activity>
 
         <!-- theme -->
-        <activity android:name=".theme.ActThemeMain"
+        <activity
+            android:name=".theme.ActThemeMain"
             android:theme="@style/MainTextStyle"/>
+
+        <!-- sql -->
+        <activity android:name=".sqlite.ActSqlMain"/>
 
     </application>
 

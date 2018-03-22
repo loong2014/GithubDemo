@@ -41,4 +41,8 @@ public class LogUtils {
         tag = tag + "  " + generateTag(caller);
         Log.i(tag, msg + "\n");
     }
+
+    public static void sqlLog(String msg) {
+        logI("SunnyLog-SQL", msg);
+    }
 }

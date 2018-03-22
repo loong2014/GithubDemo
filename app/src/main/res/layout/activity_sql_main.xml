@@ -6,28 +6,25 @@
               android:gravity="center"
               android:orientation="vertical">
 
-    <TextView
-        style="@style/MainTextStyle"
-        android:text="this is main activity for this app"/>
+    <Button
+        android:id="@+id/btn_add"
+        style="@style/MainTextStyle.MainBtnStyle"
+        android:text="添加"/>
 
     <Button
-        android:id="@+id/btn_01"
+        android:id="@+id/btn_delete"
         style="@style/MainTextStyle.MainBtnStyle"
-        android:text="启动模式"/>
+        android:text="删除"/>
 
     <Button
-        android:id="@+id/btn_02"
+        android:id="@+id/btn_update"
         style="@style/MainTextStyle.MainBtnStyle"
-        android:text="Intent"/>
+        android:text="更新"/>
 
     <Button
-        android:id="@+id/btn_03"
+        android:id="@+id/btn_query"
         style="@style/MainTextStyle.MainBtnStyle"
-        android:text="Theme"/>
+        android:text="查询"/>
 
-    <Button
-        android:id="@+id/btn_04"
-        style="@style/MainTextStyle.MainBtnStyle"
-        android:text="SQLite"/>
 
 </LinearLayout>

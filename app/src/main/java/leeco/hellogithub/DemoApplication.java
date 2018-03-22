@@ -2,6 +2,7 @@ package leeco.hellogithub;
 
 import android.app.Application;
 
+import leeco.hellogithub.sqlite.realm.RealmManager;
 import leeco.hellogithub.utils.ContextProviderUtil;
 
 /**
@@ -14,5 +15,6 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         ContextProviderUtil.init(this);
+        RealmManager.init(this);
     }
 }

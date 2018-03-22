@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin for greenDao
+apply plugin: 'realm-android' // apply plugin for realm
 
 android {
     compileSdkVersion 27
@@ -19,6 +21,10 @@ android {
     }
 }
 
+greendao {
+    schemaVersion = 1
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -30,4 +36,12 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation project(':LibCore')
     implementation 'com.google.code.gson:gson:2.2.4'
+    // 加载OrmLite相关jar包
+    implementation files('libs/ormlite-core-5.1.jar')
+    implementation files('libs/ormlite-android-5.1.jar')
+
+    // add library for GreenDao
+    compile 'org.greenrobot:greendao:3.2.2'
+    // add library for Realm
+    compile "io.realm:realm-annotations:5.0.0"
 }
